@@ -9,5 +9,5 @@ add_library (CalenderRecognizer CalenderRecognizer.cpp)
 # Add source to this project's executable.
 #add_executable (EmbeddedIntentRecognizer "CalenderRecognizer.cpp" "CalenderRecognizer.h")
 target_include_directories (CalenderRecognizer PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
+target_link_libraries (CalenderRecognizer LINK_PUBLIC RecognizerBase)
 # TODO: Add tests and install targets if needed.
