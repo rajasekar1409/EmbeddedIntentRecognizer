@@ -1,5 +1,4 @@
-﻿// CMakeProject1.h : Include file for standard system include files,
-// or project specific include files.
+﻿// MainApp.h : Includes standard system include files and user defined files
 
 #pragma once
 

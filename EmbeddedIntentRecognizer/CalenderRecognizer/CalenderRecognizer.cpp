@@ -1,18 +1,28 @@
-﻿// CMakeProject1.cpp : Defines the entry point for the application.
-//
+﻿// CalenderRecognizer.cpp : Determines Calender Intent.
 
 #include "CalenderRecognizer.h"
-
 using namespace std;
 
-CalenderRecognizer::CalenderRecognizer() {}
 bool CalenderRecognizer::processGivenInput(string userinput) {
+	regex str_expr1("([0-9]{2}):([0-9]{2})");
+	regex str_expr2("([0-9]+).([0-9]+).([0-9]*)?");
 
-	regex str_expr3("([0-9]{2}):([0-9]{2})");
-	if (regex_search(userinput, match, str_expr3)) {
-		cout << RecognizerBase::CALENDERINDENT<< endl;
+	if (regex_search(userinput, match, str_expr1)) {
+		cout << RecognizerBase::getCalenderIndent()<< endl;
 		return true;
 	}
+	else if (regex_search(userinput, match, str_expr2)) {
+		cout << RecognizerBase::getCalenderIndent() << endl;
+		return true;
+	}
+	/*else
+	{
+		regex str_expr3("(.*)(day)(.*)");
+		if (regex_match(userinput, str_expr3)) {
+			cout << RecognizerBase::getCalenderIndent() << endl;
+			return true;
+		}
+	}*/
 	return false;
 }
 

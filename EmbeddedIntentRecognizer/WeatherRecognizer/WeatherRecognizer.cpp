@@ -1,32 +1,31 @@
-﻿// CMakeProject1.cpp : Defines the entry point for the application.
-//
+﻿// WeatherRecognizer.cpp : Determines weather Intent.
 
 #include "WeatherRecognizer.h"
-
 using namespace std;
 
 WeatherRecognizer::WeatherRecognizer() {
 	keywords_climate = { "rain","sunny","cloudy","snow" };
-	keywords_city = { "Paris", "NewYork", "Tokoyo", "Berlin" };
+	keywords_city = { "Paris", "New York", "Tokoyo", "Berlin" };
 }
+
 bool WeatherRecognizer::processGivenInput(std::string userinput) 
 {
-	bool foundlabel = false;
-	string indent = "";
+	bool foundLabel = false;
+	string indent;
 	regex str_expr("(" + Weather + ")" + "(.*)");
 
 	if (regex_search(userinput, match, str_expr)) {
-		indent = RecognizerBase::WEATHERINDENT;
+		indent = RecognizerBase::getWeatherIndent();
 
 		for (auto& city : keywords_city) {
 			regex str_expr2("(" + city + ")" + "(.*)");
 
 			if (regex_search(userinput, match, str_expr2)) {
-				indent = RecognizerBase::CITYINDENT;
+				indent = RecognizerBase::getCityIndent();
 				break;
 			}
 		}
-		foundlabel = true;
+		foundLabel = true;
 	}
 	else
 	{
@@ -34,16 +33,17 @@ bool WeatherRecognizer::processGivenInput(std::string userinput)
 			regex str_expr2("(" + climate + ")" + "(.*)");
 
 			if (regex_search(userinput, match, str_expr2)) {
-				indent = RecognizerBase::WEATHERINDENT;
-				foundlabel = true;
+				indent = RecognizerBase::getWeatherIndent();
+				foundLabel = true;
 				break;
 			}
 		}
 	}
-	if (foundlabel)
+
+	if (foundLabel)
 	{
 		cout << indent << endl;
 	}
-	return foundlabel;
+	return foundLabel;
 }
 

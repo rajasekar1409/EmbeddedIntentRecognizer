@@ -1,5 +1,4 @@
-﻿// CMakeProject1.h : Include file for standard system include files,
-// or project specific include files.
+﻿// RecognizerBase.h : Includes standard system include files and user defined files
 
 #pragma once
 
@@ -8,14 +7,23 @@
 using namespace std;
 
 class RecognizerBase {
-public :
+private :
 	static const string WEATHERINDENT;
 	static const string CITYINDENT;
 	static const string CALENDERINDENT;
 	static const string FACTINDENT;
+
+public:
 	smatch match;
-	RecognizerBase();
-	virtual bool processGivenInput(std::string userinput) = 0;
+
+	RecognizerBase(){}
+	virtual bool processGivenInput(string userinput) = 0;
+	string getWeatherIndent();
+	string getCityIndent();
+	string getCalenderIndent();
+	string getFactIndent();
+	smatch getSmatch();
+	virtual ~RecognizerBase() = default;
 };
 
 // TODO: Reference additional headers your program requires here.

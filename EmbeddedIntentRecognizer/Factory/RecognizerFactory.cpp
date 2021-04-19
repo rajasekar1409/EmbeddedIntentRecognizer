@@ -1,24 +1,20 @@
-﻿// CMakeProject1.cpp : Defines the entry point for the application.
-//
+﻿// RecognizerFactory.cpp : Factory class creates the instances at runtime for the defined classes.
 
 #include "RecognizerFactory.h"
 #include "WeatherRecognizer.h"
 #include "CalenderRecognizer.h"
 #include "FactRecognizer.h"
-
 using namespace std;
 
-RecognizerFactory::RecognizerFactory() {}
-
-RecognizerFactory* RecognizerFactory::RecognizerFactoryinstance_p = nullptr;
+RecognizerFactory* RecognizerFactory::recognizerFactoryInstancePtr = nullptr;
 
 RecognizerFactory* RecognizerFactory::GetinstanceRecognizerFactory()
 {
-	if (RecognizerFactoryinstance_p == nullptr)
+	if (recognizerFactoryInstancePtr == nullptr)
 	{
-		RecognizerFactoryinstance_p = new RecognizerFactory();
+		recognizerFactoryInstancePtr = new RecognizerFactory();
 	}
-	return RecognizerFactoryinstance_p;
+	return recognizerFactoryInstancePtr;
 }
 
 
